@@ -1,0 +1,38 @@
+PROBLEM: N = 6, K = 6 
+         Arr[] = {1, 10, 12, 9, 2, 3}
+Output: 2
+
+Explanation: First we add (1 + 2), now the new list becomes 3 10 12 9 3, then we add (3 + 3), now the new list becomes 6 10 12 9,
+Now all the elements in the list are greater than 6. Hence the output is 2 i:e 2 operations are required to do this
+
+
+
+
+SOLUTION:
+
+int minOperations(int arr[], int n, int k) {
+        priority_queue<int, vector<int>, greater<int>> pq;
+        int cnt=0, a, b;
+        
+        for(int i=0;i<n;i++){
+            pq.push(arr[i]);
+        }
+        
+        while(pq.top()<k){
+            
+            a=pq.top();
+            pq.pop();
+            b=pq.top();
+            pq.pop();
+            pq.push(a+b);
+            cnt++;
+            
+        }
+        
+        return cnt;
+    }
+    
+    
+    
+    
+    
